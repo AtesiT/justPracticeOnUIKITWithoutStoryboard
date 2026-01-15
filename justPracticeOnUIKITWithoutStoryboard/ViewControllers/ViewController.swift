@@ -18,10 +18,18 @@ final class ViewController: UIViewController {
         return label
     }()
     
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.insertSegment(withTitle: "First Segment", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "Second Segment", at: 1, animated: false)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        return segmentedControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setSubViews(subView: saveButton, titleLabel)
+        setSubViews(subView: saveButton, titleLabel, segmentedControl)
         setupConstraints()
     }
 
@@ -41,7 +49,11 @@ extension ViewController {
             
             titleLabel.topAnchor.constraint(equalTo: saveButton.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            segmentedControl.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 50),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
