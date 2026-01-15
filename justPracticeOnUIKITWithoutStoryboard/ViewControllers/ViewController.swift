@@ -26,10 +26,20 @@ final class ViewController: UIViewController {
         return segmentedControl
     }()
     
+    private lazy var secondVCButton: UIButton = {
+        let secondVCButton = UIButton()
+        secondVCButton.backgroundColor = .red
+        secondVCButton.setTitle("Second View Controller", for: .normal)
+        secondVCButton.layer.cornerRadius = 15
+        secondVCButton.addTarget(self, action: #selector(goToSecondVC), for: .touchUpInside)
+        secondVCButton.translatesAutoresizingMaskIntoConstraints = false
+        return secondVCButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setSubViews(subView: saveButton, titleLabel, segmentedControl)
+        setSubViews(subView: saveButton, titleLabel, segmentedControl, secondVCButton)
         setupConstraints()
     }
 
@@ -37,6 +47,11 @@ final class ViewController: UIViewController {
         subView.forEach { theView in
             view.addSubview(theView)
         }
+    }
+    
+    @objc private func goToSecondVC() {
+        let secondVC = SecondViewController()
+        present(secondVC, animated: true, completion: nil)
     }
 }
 
@@ -54,6 +69,10 @@ extension ViewController {
             segmentedControl.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 50),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            secondVCButton.topAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 50),
+            secondVCButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            secondVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
 }
