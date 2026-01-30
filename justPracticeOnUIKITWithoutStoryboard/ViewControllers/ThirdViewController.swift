@@ -9,10 +9,17 @@ final class ThirdViewController: UIViewController {
         return theView
     }()
     
+    private lazy var theSlider: UISlider = {
+        let theSlider = UISlider()
+        theSlider.translatesAutoresizingMaskIntoConstraints = false
+        return theSlider
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(theView)
+        view.addSubview(theSlider)
         setupConstraints()
     }
 }
@@ -23,7 +30,12 @@ extension ThirdViewController {
             theView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             theView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            theView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 40)
+            theView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            
+            theSlider.topAnchor.constraint(equalTo: theView.topAnchor, constant: 40),
+            theSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
             ])
     }
 }
