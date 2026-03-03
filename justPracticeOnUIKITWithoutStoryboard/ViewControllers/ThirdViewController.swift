@@ -15,6 +15,14 @@ final class ThirdViewController: UIViewController {
         return theSlider
     }()
     
+    private lazy var theSwitch: UISwitch = {
+        let theSwitch = UISwitch()
+        theSwitch.translatesAutoresizingMaskIntoConstraints = false
+        theSwitch.onTintColor = .systemGreen
+        theSwitch.isOn = true
+        return theSwitch
+    }()
+    
     private lazy var theToolbar: UIToolbar = {
         let toolbar = UIToolbar()
         toolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +36,7 @@ final class ThirdViewController: UIViewController {
         return toolbar
     }()
     
+    
     @objc private func didTapButton() {
         print("Test")
     }
@@ -37,6 +46,7 @@ final class ThirdViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(theView)
         view.addSubview(theSlider)
+        view.addSubview(theSwitch)
         view.addSubview(theToolbar)
         setupConstraints()
     }
@@ -53,6 +63,10 @@ extension ThirdViewController {
             theSlider.topAnchor.constraint(equalTo: theView.topAnchor, constant: 40),
             theSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theSwitch.topAnchor.constraint(equalTo: theSlider.topAnchor, constant: 60),
+            theSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             theToolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             theToolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
