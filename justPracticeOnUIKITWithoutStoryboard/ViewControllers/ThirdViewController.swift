@@ -15,11 +15,29 @@ final class ThirdViewController: UIViewController {
         return theSlider
     }()
     
+    private lazy var theToolbar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
+        //  Добавление элементов
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let action = UIBarButtonItem(title: "Тест", style: .plain, target: self, action: #selector(didTapButton))
+        
+        toolbar.setItems([space, action, space], animated: false)
+        
+        return toolbar
+    }()
+    
+    @objc private func didTapButton() {
+        print("Test")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(theView)
         view.addSubview(theSlider)
+        view.addSubview(theToolbar)
         setupConstraints()
     }
 }
@@ -36,6 +54,9 @@ extension ThirdViewController {
             theSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            theToolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            theToolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            theToolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
     }
 }
