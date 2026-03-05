@@ -23,6 +23,15 @@ final class ThirdViewController: UIViewController {
         return theSwitch
     }()
     
+    private lazy var theProgressBar: UIProgressView = {
+        let progressBar = UIProgressView(progressViewStyle: .default)
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        progressBar.tintColor = .systemGreen
+        progressBar.trackTintColor = .systemRed
+        
+        return progressBar
+    }()
+    
     private lazy var theToolbar: UIToolbar = {
         let toolbar = UIToolbar()
         toolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +56,7 @@ final class ThirdViewController: UIViewController {
         view.addSubview(theView)
         view.addSubview(theSlider)
         view.addSubview(theSwitch)
+        view.addSubview(theProgressBar)
         view.addSubview(theToolbar)
         setupConstraints()
     }
@@ -67,6 +77,10 @@ extension ThirdViewController {
             theSwitch.topAnchor.constraint(equalTo: theSlider.topAnchor, constant: 60),
             theSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theProgressBar.topAnchor.constraint(equalTo: theSwitch.topAnchor, constant: 60),
+            theProgressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theProgressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             theToolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             theToolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
