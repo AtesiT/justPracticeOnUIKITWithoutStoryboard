@@ -59,6 +59,11 @@ final class ThirdViewController: UIViewController {
         return segmentedControl
     }()
     
+    private func setViews(theView: UIView...) {
+        theView.forEach { element in
+            view.addSubview(element)
+        }
+    }
     
     @objc private func didTapButton() {
         print("Test")
@@ -66,14 +71,7 @@ final class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        view.addSubview(theView)
-        view.addSubview(theSlider)
-        view.addSubview(theSwitch)
-        view.addSubview(theProgressBar)
-        view.addSubview(theToolbar)
-        view.addSubview(theLabel)
-        view.addSubview(theSegmentedControl)
+        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl)
         setupConstraints()
     }
 }
