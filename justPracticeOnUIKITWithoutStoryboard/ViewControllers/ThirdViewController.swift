@@ -45,6 +45,14 @@ final class ThirdViewController: UIViewController {
         return toolbar
     }()
     
+    private lazy var theLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Текст"
+        label.textAlignment = .center
+        return label
+    }()
+    
     
     @objc private func didTapButton() {
         print("Test")
@@ -58,6 +66,7 @@ final class ThirdViewController: UIViewController {
         view.addSubview(theSwitch)
         view.addSubview(theProgressBar)
         view.addSubview(theToolbar)
+        view.addSubview(theLabel)
         setupConstraints()
     }
 }
@@ -84,7 +93,11 @@ extension ThirdViewController {
             
             theToolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             theToolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            theToolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            theToolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            theLabel.topAnchor.constraint(equalTo: theProgressBar.topAnchor, constant: 60),
+            theLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             ])
     }
 }
