@@ -53,6 +53,12 @@ final class ThirdViewController: UIViewController {
         return label
     }()
     
+    private lazy var theSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["First", "Second"])
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        return segmentedControl
+    }()
+    
     
     @objc private func didTapButton() {
         print("Test")
@@ -67,6 +73,7 @@ final class ThirdViewController: UIViewController {
         view.addSubview(theProgressBar)
         view.addSubview(theToolbar)
         view.addSubview(theLabel)
+        view.addSubview(theSegmentedControl)
         setupConstraints()
     }
 }
@@ -98,6 +105,10 @@ extension ThirdViewController {
             theLabel.topAnchor.constraint(equalTo: theProgressBar.topAnchor, constant: 60),
             theLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theSegmentedControl.topAnchor.constraint(equalTo: theLabel.topAnchor, constant: 60),
+            theSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             ])
     }
 }
