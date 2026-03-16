@@ -67,6 +67,13 @@ final class ThirdViewController: UIViewController {
         return button
     }()
     
+    private lazy var theActivityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.isHidden = false
+        return activityIndicator
+    }()
+    
     private func setViews(theView: UIView...) {
         theView.forEach { element in
             view.addSubview(element)
@@ -79,7 +86,7 @@ final class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton)
+        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator)
         setupConstraints()
     }
 }
@@ -119,6 +126,10 @@ extension ThirdViewController {
             theButton.topAnchor.constraint(equalTo: theSegmentedControl.topAnchor, constant: 60),
             theButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             theButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            
+            theActivityIndicator.topAnchor.constraint(equalTo: theButton.topAnchor, constant: 60),
+            theActivityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            theActivityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             ])
 
     }
