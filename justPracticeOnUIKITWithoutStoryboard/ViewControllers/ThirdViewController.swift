@@ -59,6 +59,14 @@ final class ThirdViewController: UIViewController {
         return segmentedControl
     }()
     
+    private lazy var theButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Кнопка", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        return button
+    }()
+    
     private func setViews(theView: UIView...) {
         theView.forEach { element in
             view.addSubview(element)
@@ -71,7 +79,7 @@ final class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl)
+        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton)
         setupConstraints()
     }
 }
@@ -107,7 +115,12 @@ extension ThirdViewController {
             theSegmentedControl.topAnchor.constraint(equalTo: theLabel.topAnchor, constant: 60),
             theSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theButton.topAnchor.constraint(equalTo: theSegmentedControl.topAnchor, constant: 60),
+            theButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            theButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             ])
+
     }
 }
 
