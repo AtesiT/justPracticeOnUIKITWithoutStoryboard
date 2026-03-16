@@ -74,6 +74,12 @@ final class ThirdViewController: UIViewController {
         return activityIndicator
     }()
     
+    private lazy var theStepper: UIStepper = {
+       let stepper = UIStepper()
+        stepper.translatesAutoresizingMaskIntoConstraints = false
+        return stepper
+    }()
+    
     private func setViews(theView: UIView...) {
         theView.forEach { element in
             view.addSubview(element)
@@ -86,7 +92,7 @@ final class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator)
+        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator, theStepper)
         setupConstraints()
     }
 }
@@ -130,6 +136,10 @@ extension ThirdViewController {
             theActivityIndicator.topAnchor.constraint(equalTo: theButton.topAnchor, constant: 60),
             theActivityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             theActivityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            
+            theStepper.topAnchor.constraint(equalTo: theActivityIndicator.topAnchor, constant: 60),
+            theStepper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theStepper.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             ])
 
     }
