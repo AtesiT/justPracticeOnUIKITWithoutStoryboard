@@ -87,6 +87,13 @@ final class ThirdViewController: UIViewController {
         return textField
     }()
     
+    private lazy var theSearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search..."
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
+    }()
+    
     private func setViews(theView: UIView...) {
         theView.forEach { element in
             view.addSubview(element)
@@ -99,7 +106,7 @@ final class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator, theStepper, theTextField)
+        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator, theStepper, theTextField, theSearchBar)
         setupConstraints()
     }
 }
@@ -151,6 +158,10 @@ extension ThirdViewController {
             theTextField.topAnchor.constraint(equalTo: theStepper.topAnchor, constant: 60),
             theTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            
+            theSearchBar.topAnchor.constraint(equalTo: theTextField.topAnchor, constant: 60),
+            theSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20)
             
             ])
 
