@@ -94,6 +94,16 @@ final class ThirdViewController: UIViewController {
         return searchBar
     }()
     
+    private lazy var theImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = .systemPink
+        imageView.backgroundColor = .white
+        imageView.frame = .init(x: 20, y: 700, width: 75, height: 50)
+        imageView.image = UIImage(systemName: "heart.fill")
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private func setViews(theView: UIView...) {
         theView.forEach { element in
             view.addSubview(element)
@@ -106,7 +116,7 @@ final class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator, theStepper, theTextField, theSearchBar)
+        setViews(theView: theView, theSlider, theSwitch, theProgressBar, theToolbar, theLabel, theSegmentedControl, theButton, theActivityIndicator, theStepper, theTextField, theSearchBar, theImageView)
         setupConstraints()
     }
 }
@@ -161,7 +171,11 @@ extension ThirdViewController {
             
             theSearchBar.topAnchor.constraint(equalTo: theTextField.topAnchor, constant: 60),
             theSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            theSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20)
+            theSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            
+            theImageView.topAnchor.constraint(equalTo: theSearchBar.topAnchor, constant: 60),
+            theImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             
             ])
 
