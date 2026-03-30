@@ -104,6 +104,20 @@ final class ThirdViewController: UIViewController {
         return imageView
     }()
     
+    //  MARK: - THE STARTING PART OF SCROLL VIEW
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    //  MARK: - ENDING PART OF SCROLL VIEW
+    
     private func setViews(theView: UIView...) {
         theView.forEach { element in
             view.addSubview(element)
