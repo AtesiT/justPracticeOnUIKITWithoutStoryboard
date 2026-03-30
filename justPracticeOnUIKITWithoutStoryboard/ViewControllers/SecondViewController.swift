@@ -15,12 +15,20 @@ final class SecondViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+    private lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(textField)
         view.addSubview(textView)
+        view.addSubview(datePicker)
         setConstraints()
     }
 }
@@ -35,7 +43,11 @@ private extension SecondViewController {
             textView.topAnchor.constraint(equalTo: textField.topAnchor, constant: 50),
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            textView.heightAnchor.constraint(equalToConstant: 150)
+            textView.heightAnchor.constraint(equalToConstant: 150),
+            
+            datePicker.topAnchor.constraint(equalTo: textView.topAnchor, constant: 50),
+            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
