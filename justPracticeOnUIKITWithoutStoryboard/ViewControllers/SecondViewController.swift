@@ -22,6 +22,12 @@ final class SecondViewController: UIViewController {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Click", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,7 @@ final class SecondViewController: UIViewController {
         view.addSubview(textField)
         view.addSubview(textView)
         view.addSubview(datePicker)
+        view.addSubview(button)
         setConstraints()
     }
 }
@@ -48,6 +55,10 @@ private extension SecondViewController {
             datePicker.topAnchor.constraint(equalTo: textView.topAnchor, constant: 50),
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            button.topAnchor.constraint(equalTo: datePicker.topAnchor, constant: 200),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
