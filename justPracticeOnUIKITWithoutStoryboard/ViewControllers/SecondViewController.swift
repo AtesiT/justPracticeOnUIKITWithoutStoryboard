@@ -35,6 +35,15 @@ final class SecondViewController: UIViewController {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = 5
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .systemBlue
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        return pageControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +53,7 @@ final class SecondViewController: UIViewController {
         view.addSubview(datePicker)
         view.addSubview(button)
         view.addSubview(inlineDatePicker)
+        view.addSubview(pageControl)
         setConstraints()
     }
 }
@@ -71,6 +81,8 @@ private extension SecondViewController {
             inlineDatePicker.topAnchor.constraint(equalTo: button.topAnchor, constant: 30),
             inlineDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             inlineDatePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
 }
