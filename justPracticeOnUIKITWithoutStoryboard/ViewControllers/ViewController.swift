@@ -36,10 +36,20 @@ final class ViewController: UIViewController {
         return secondVCButton
     }()
     
+    private lazy var thirdVCButton: UIButton = {
+        let thirdVCButton = UIButton()
+        thirdVCButton.backgroundColor = .orange
+        thirdVCButton.setTitle("Third View Controller", for: .normal)
+        thirdVCButton.layer.cornerRadius = 15
+        thirdVCButton.addTarget(self, action: #selector(goToThirdVC), for: .touchUpInside)
+        thirdVCButton.translatesAutoresizingMaskIntoConstraints = false
+        return thirdVCButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setSubViews(subView: saveButton, titleLabel, segmentedControl, secondVCButton)
+        setSubViews(subView: saveButton, titleLabel, segmentedControl, secondVCButton, thirdVCButton)
         setupConstraints()
     }
 
@@ -52,6 +62,11 @@ final class ViewController: UIViewController {
     @objc private func goToSecondVC() {
         let secondVC = SecondViewController()
         present(secondVC, animated: true, completion: nil)
+    }
+    
+    @objc private func goToThirdVC() {
+        let thirdVC = ThirdViewController()
+        present(thirdVC, animated: true, completion: nil)
     }
 }
 
@@ -72,7 +87,11 @@ extension ViewController {
             
             secondVCButton.topAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 50),
             secondVCButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            secondVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            secondVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            thirdVCButton.topAnchor.constraint(equalTo: secondVCButton.topAnchor, constant: 50),
+            thirdVCButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            thirdVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
