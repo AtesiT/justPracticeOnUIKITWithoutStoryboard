@@ -2,11 +2,14 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    private lazy var saveButton: UIButton = {
+    private lazy var changeTheme: UIButton = {
         let button = UIButton()
         button.backgroundColor = .green
+        button.setTitle("Change theme", for: .normal)
         button.tintColor = .white
+        button.layer.cornerRadius = 15
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(toChangeTheme), for: .touchUpInside)
         return button
     }()
     
@@ -57,7 +60,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setSubViews(subView: saveButton, titleLabel, segmentedControl, secondVCButton, thirdVCButton, theView)
+        setSubViews(subView: changeTheme, titleLabel, segmentedControl, secondVCButton, thirdVCButton, theView)
         setupConstraints()
     }
 
@@ -76,16 +79,24 @@ final class ViewController: UIViewController {
         let thirdVC = ThirdViewController()
         present(thirdVC, animated: true, completion: nil)
     }
+    
+    @objc private func toChangeTheme() {
+        if view.backgroundColor == .white {
+            view.backgroundColor = .black
+        } else {
+            view.backgroundColor = .white
+        }
+    }
 }
 
 extension ViewController {
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            changeTheme.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            changeTheme.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            changeTheme.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            titleLabel.topAnchor.constraint(equalTo: saveButton.topAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: changeTheme.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
