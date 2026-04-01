@@ -46,10 +46,18 @@ final class ViewController: UIViewController {
         return thirdVCButton
     }()
     
+    private lazy var theView: UIView = {
+        let theView = UIView()
+        theView.backgroundColor = .cyan
+        theView.layer.cornerRadius = 35
+        theView.translatesAutoresizingMaskIntoConstraints = false
+        return theView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setSubViews(subView: saveButton, titleLabel, segmentedControl, secondVCButton, thirdVCButton)
+        setSubViews(subView: saveButton, titleLabel, segmentedControl, secondVCButton, thirdVCButton, theView)
         setupConstraints()
     }
 
@@ -92,6 +100,11 @@ extension ViewController {
             thirdVCButton.topAnchor.constraint(equalTo: secondVCButton.topAnchor, constant: 50),
             thirdVCButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             thirdVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theView.topAnchor.constraint(equalTo: thirdVCButton.topAnchor, constant: 50),
+            theView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            theView.bottomAnchor.constraint(equalTo: theView.topAnchor, constant: 80),
         ])
     }
 }
