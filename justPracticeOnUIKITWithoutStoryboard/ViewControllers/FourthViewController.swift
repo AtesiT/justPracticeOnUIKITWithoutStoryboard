@@ -6,7 +6,8 @@ final class FourthViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Button", for: .normal)
-        button.setTitleColor(.green, for: .normal)
+        button.backgroundColor = .green
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
@@ -14,15 +15,21 @@ final class FourthViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Button", for: .normal)
-        button.setTitleColor(.red, for: .normal)
+        button.backgroundColor = .red
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(greenButton)
-        view.addSubview(redButton)
+        setSubviews(theView: greenButton, redButton)
         makeConstraints()
+    }
+    
+    private func setSubviews(theView: UIView...) {
+        theView.forEach { everyView in
+            view.addSubview(everyView)
+        }
     }
 }
 
