@@ -2,12 +2,17 @@ import UIKit
 
 final class FourthViewController: UIViewController {
     
+    private var countClickedGreenButton = 0
+    private var countClickedRedButton = 0
+    private var countClickedBlueButton = 0
+    
     private lazy var greenButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Button", for: .normal)
         button.backgroundColor = .green
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(madeGreenButtonClick), for: .touchUpInside)
         return button
     }()
     
@@ -17,6 +22,7 @@ final class FourthViewController: UIViewController {
         button.setTitle("Button", for: .normal)
         button.backgroundColor = .red
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(madeRedButtonClick), for: .touchUpInside)
         return button
     }()
     
@@ -26,6 +32,7 @@ final class FourthViewController: UIViewController {
         button.setTitle("Button", for: .normal)
         button.backgroundColor = .blue
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(madeBlueButtonClick), for: .touchUpInside)
         return button
     }()
     
@@ -39,6 +46,21 @@ final class FourthViewController: UIViewController {
         theView.forEach { everyView in
             view.addSubview(everyView)
         }
+    }
+    
+    @objc private func madeGreenButtonClick() {
+        countClickedGreenButton += 1
+        print(countClickedGreenButton)
+    }
+    
+    @objc private func madeRedButtonClick() {
+        countClickedRedButton += 1
+        print(countClickedRedButton)
+    }
+    
+    @objc private func madeBlueButtonClick() {
+        countClickedBlueButton += 1
+        print(countClickedBlueButton)
     }
 }
 
