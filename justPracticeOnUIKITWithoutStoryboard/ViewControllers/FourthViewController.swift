@@ -62,6 +62,10 @@ final class FourthViewController: UIViewController {
         countClickedBlueButton += 1
         print(countClickedBlueButton)
     }
+    
+    private func generalCountClicked() {
+        print("General clicks: \(countClickedRedButton + countClickedBlueButton + countClickedGreenButton). \n Clicks on green button: \(countClickedGreenButton),\n Clicks on red button: \(countClickedRedButton), \n Clicks on blue button: \(countClickedBlueButton)")
+    }
 }
 
 extension FourthViewController {
