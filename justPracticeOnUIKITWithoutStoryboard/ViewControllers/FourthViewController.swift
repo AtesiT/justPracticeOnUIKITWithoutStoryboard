@@ -74,7 +74,11 @@ final class FourthViewController: UIViewController {
     }
     
     @objc private func generalCountClicked() {
-        print("General clicks: \(countClickedRedButton + countClickedBlueButton + countClickedGreenButton). \n Clicks on green button: \(countClickedGreenButton),\n Clicks on red button: \(countClickedRedButton), \n Clicks on blue button: \(countClickedBlueButton).")
+        let generalCounts = countClickedRedButton + countClickedBlueButton + countClickedGreenButton
+        print("General clicks: \(generalCounts). \n Clicks on green button: \(countClickedGreenButton),\n Clicks on red button: \(countClickedRedButton), \n Clicks on blue button: \(countClickedBlueButton).")
+        if generalCounts >= 5 {
+            view.backgroundColor = .black
+        }
     }
 }
 
