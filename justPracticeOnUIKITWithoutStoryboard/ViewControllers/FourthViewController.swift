@@ -59,6 +59,7 @@ final class FourthViewController: UIViewController {
     }
     
     @objc private func madeGreenButtonClick() {
+        hideRedBlueButtons()
         countClickedGreenButton += 1
         print(countClickedGreenButton)
     }
@@ -78,6 +79,17 @@ final class FourthViewController: UIViewController {
         print("General clicks: \(generalCounts). \n Clicks on green button: \(countClickedGreenButton),\n Clicks on red button: \(countClickedRedButton), \n Clicks on blue button: \(countClickedBlueButton).")
         if generalCounts >= 5 {
             view.backgroundColor = .black
+        }
+    }
+    
+    private func hideRedBlueButtons() {
+        redButton.isHidden.toggle()
+        blueButton.isHidden.toggle()
+        
+        if countClickedGreenButton >= 10 && countClickedGreenButton <= 15 {
+            view.backgroundColor = .green
+        } else {
+            view.backgroundColor = .systemBackground
         }
     }
 }
