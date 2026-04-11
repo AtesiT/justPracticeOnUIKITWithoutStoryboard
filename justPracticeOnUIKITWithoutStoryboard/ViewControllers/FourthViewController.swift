@@ -73,6 +73,7 @@ final class FourthViewController: UIViewController {
     @objc private func madeBlueButtonClick() {
         countClickedBlueButton += 1
         print(countClickedBlueButton)
+        changeColors()
     }
     
     @objc private func generalCountClicked() {
@@ -102,6 +103,17 @@ final class FourthViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func changeColors() {
+        let standart = CGFloat(0/255)
+        let variableToChangeGreenColor = 255 - countClickedGreenButton * 5
+        let variableToChangeRedColor = 255 - countClickedRedButton * 5
+        let variableToChangeBlueColor = 255 - countClickedBlueButton * 5
+        
+        greenButton.backgroundColor = UIColor(red: standart, green: CGFloat(variableToChangeGreenColor) / 255, blue: standart, alpha: 1.0)
+        redButton.backgroundColor = UIColor(red: CGFloat(variableToChangeRedColor) / 255, green: standart, blue: standart, alpha: 1.0)
+        blueButton.backgroundColor = UIColor(red: standart, green: standart, blue: CGFloat(variableToChangeBlueColor) / 255, alpha: 1.0)
     }
 }
 
