@@ -59,14 +59,15 @@ final class FourthViewController: UIViewController {
     }
     
     @objc private func madeGreenButtonClick() {
-        hideRedBlueButtons()
         countClickedGreenButton += 1
         print(countClickedGreenButton)
+        hideRedBlueButtons()
     }
     
     @objc private func madeRedButtonClick() {
         countClickedRedButton += 1
         print(countClickedRedButton)
+        showAlert()
     }
     
     @objc private func madeBlueButtonClick() {
@@ -91,6 +92,16 @@ final class FourthViewController: UIViewController {
         } else {
             view.backgroundColor = .systemBackground
         }
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(
+            title: "Alert",
+            message: "You have \(countClickedRedButton) clicks",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
