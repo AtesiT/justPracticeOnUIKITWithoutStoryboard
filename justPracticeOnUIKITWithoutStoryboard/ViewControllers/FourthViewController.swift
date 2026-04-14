@@ -12,7 +12,7 @@ final class FourthViewController: UIViewController {
         didSet { updCountLabel() }
     }
     
-    private var generalCountClickedButtons = ""
+    private var generalCountClickedButtons = "0"
     
     private lazy var greenButton: UIButton = {
         let button = UIButton()
@@ -60,9 +60,17 @@ final class FourthViewController: UIViewController {
         return label
     }()
     
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["White background", "Black background"])
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(segmentedChanged), for: .valueChanged)
+        return segmentedControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel)
+        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel, segmentedControl)
         makeConstraints()
     }
     
@@ -97,6 +105,15 @@ final class FourthViewController: UIViewController {
             view.backgroundColor = .black
         }
     }
+    
+    @objc private func segmentedChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            view.backgroundColor = .white
+        } else {
+            view.backgroundColor = .black
+        }
+    }
+    
     
     private func hideRedBlueButtons() {
         redButton.isHidden.toggle()
@@ -134,6 +151,7 @@ final class FourthViewController: UIViewController {
         generalCountClickedButtons = "\(countClickedGreenButton + countClickedRedButton + countClickedBlueButton)"
         countLabel.text = generalCountClickedButtons
     }
+    
 }
 
 extension FourthViewController {
@@ -159,6 +177,10 @@ extension FourthViewController {
                 countLabel.topAnchor.constraint(equalTo: generalCountButton.topAnchor, constant: 60),
                 countLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
                 countLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+                
+                segmentedControl.topAnchor.constraint(equalTo: countLabel.topAnchor, constant: 60),
+                segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+                segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             ]
         )
     }
