@@ -2,9 +2,17 @@ import UIKit
 
 final class FourthViewController: UIViewController {
     
-    private var countClickedGreenButton = 0
-    private var countClickedRedButton = 0
-    private var countClickedBlueButton = 0
+    private var countClickedGreenButton = 0 {
+        didSet { updCountLabel() }
+    }
+    private var countClickedRedButton = 0 {
+        didSet { updCountLabel() }
+    }
+    private var countClickedBlueButton = 0 {
+        didSet { updCountLabel() }
+    }
+    
+    private var generalCountClickedButtons = ""
     
     private lazy var greenButton: UIButton = {
         let button = UIButton()
@@ -46,9 +54,15 @@ final class FourthViewController: UIViewController {
         return button
     }()
     
+    private lazy var countLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton)
+        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel)
         makeConstraints()
     }
     
@@ -115,6 +129,11 @@ final class FourthViewController: UIViewController {
         redButton.backgroundColor = UIColor(red: CGFloat(variableToChangeRedColor) / 255, green: standart, blue: standart, alpha: 1.0)
         blueButton.backgroundColor = UIColor(red: standart, green: standart, blue: CGFloat(variableToChangeBlueColor) / 255, alpha: 1.0)
     }
+    
+    private func updCountLabel() {
+        generalCountClickedButtons = "\(countClickedGreenButton + countClickedRedButton + countClickedBlueButton)"
+        countLabel.text = generalCountClickedButtons
+    }
 }
 
 extension FourthViewController {
@@ -136,6 +155,10 @@ extension FourthViewController {
                 generalCountButton.topAnchor.constraint(equalTo: blueButton.topAnchor, constant: 60),
                 generalCountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
                 generalCountButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+                
+                countLabel.topAnchor.constraint(equalTo: generalCountButton.topAnchor, constant: 60),
+                countLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+                countLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             ]
         )
     }
