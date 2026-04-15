@@ -68,9 +68,17 @@ final class FourthViewController: UIViewController {
         return segmentedControl
     }()
     
+    private lazy var yellowButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Button", for: .normal)
+        button.backgroundColor = .yellow
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel, segmentedControl)
+        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel, segmentedControl, yellowButton)
         makeConstraints()
     }
     
@@ -181,6 +189,10 @@ extension FourthViewController {
                 segmentedControl.topAnchor.constraint(equalTo: countLabel.topAnchor, constant: 60),
                 segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
                 segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+                
+                yellowButton.topAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 60),
+                yellowButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+                yellowButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             ]
         )
     }
