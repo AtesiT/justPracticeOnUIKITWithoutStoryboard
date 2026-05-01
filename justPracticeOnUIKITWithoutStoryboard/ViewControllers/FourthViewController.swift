@@ -100,9 +100,17 @@ final class FourthViewController: UIViewController {
         return button
     }()
     
+    private lazy var buttonsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Label of buttons"
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel, segmentedControl, yellowButton, pinkButton, grayButton, brownButton)
+        setSubviews(theView: greenButton, redButton, blueButton, generalCountButton, countLabel, segmentedControl, yellowButton, pinkButton, grayButton, brownButton, buttonsLabel)
         makeConstraints()
     }
     
@@ -229,6 +237,10 @@ extension FourthViewController {
                 brownButton.topAnchor.constraint(equalTo: grayButton.topAnchor, constant: 60),
                 brownButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
                 brownButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+                
+                buttonsLabel.topAnchor.constraint(equalTo: brownButton.topAnchor, constant: 60),
+                buttonsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+                buttonsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             ]
         )
     }
