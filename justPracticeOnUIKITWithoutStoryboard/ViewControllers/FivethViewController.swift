@@ -15,12 +15,20 @@ final class FivethViewController: UIViewController {
         return view
     }()
     
+    private lazy var showElementsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Show elements", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        scrollView.addSubview(showElementsButton)
         
         setConstraints()
     }
@@ -50,8 +58,12 @@ extension FivethViewController {
             contentView.heightAnchor.constraint(equalToConstant: 100),
             
             //  Устанавливаем нижний край нашего ContentView к нижнему краю ScrollView
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             //  MARK: - END OF ContentView
+            
+            showElementsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            showElementsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            showElementsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
         ])
     }
 }
