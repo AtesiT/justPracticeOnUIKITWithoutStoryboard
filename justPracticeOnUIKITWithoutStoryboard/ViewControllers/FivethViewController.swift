@@ -22,13 +22,22 @@ final class FivethViewController: UIViewController {
         return button
     }()
     
+    private lazy var rectangleView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        view.addSubview(rectangleView)
+        view.addSubview(showElementsButton)
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        scrollView.addSubview(showElementsButton)
         
         setConstraints()
     }
@@ -64,6 +73,11 @@ extension FivethViewController {
             showElementsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             showElementsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             showElementsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            
+            rectangleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            rectangleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            rectangleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            rectangleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
 }
