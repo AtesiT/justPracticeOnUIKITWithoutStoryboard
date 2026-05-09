@@ -2,6 +2,8 @@ import UIKit
 
 final class FivethViewController: UIViewController {
     
+    private var variableShowElements = true
+    
     private lazy var scrollView: UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.translatesAutoresizingMaskIntoConstraints = false
@@ -17,8 +19,9 @@ final class FivethViewController: UIViewController {
     
     private lazy var showElementsButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Show elements", for: .normal)
+        button.setTitle("Hide or Show elements", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showElements), for: .touchUpInside)
         return button
     }()
     
@@ -30,13 +33,22 @@ final class FivethViewController: UIViewController {
         return view
     }()
     
+    @objc private func showElements() {
+        if variableShowElements {
+            rectangleView.isHidden = true
+        } else {
+            rectangleView.isHidden = false
+        }
+        variableShowElements.toggle()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         view.addSubview(rectangleView)
-        view.addSubview(showElementsButton)
         view.addSubview(scrollView)
+        view.addSubview(showElementsButton)
         scrollView.addSubview(contentView)
         
         setConstraints()
