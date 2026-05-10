@@ -33,6 +33,13 @@ final class FivethViewController: UIViewController {
         return view
     }()
     
+    private lazy var titleLabel: UILabel = {
+        let title = UILabel()
+        title.text = "Swift"
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
     @objc private func showElements() {
         if variableShowElements {
             rectangleView.isHidden = true
@@ -49,6 +56,7 @@ final class FivethViewController: UIViewController {
         view.addSubview(rectangleView)
         view.addSubview(scrollView)
         view.addSubview(showElementsButton)
+        view.addSubview(titleLabel)
         scrollView.addSubview(contentView)
         
         setConstraints()
@@ -85,6 +93,10 @@ extension FivethViewController {
             showElementsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             showElementsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             showElementsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            
+            titleLabel.topAnchor.constraint(equalTo: showElementsButton.topAnchor, constant: 50),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             
             rectangleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             rectangleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
