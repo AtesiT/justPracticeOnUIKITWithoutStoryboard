@@ -18,11 +18,20 @@ final class SixthViewController: UIViewController {
         return label
     }()
     
+    private lazy var setTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Any text.."
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(setButton)
         view.addSubview(setLabel)
+        view.addSubview(setTextField)
         setConstraints()
     }
 }
@@ -38,6 +47,10 @@ extension SixthViewController {
             setLabel.topAnchor.constraint(equalTo: setButton.topAnchor, constant: 60),
             setLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             setLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            
+            setTextField.topAnchor.constraint(equalTo: setLabel.topAnchor, constant: 60),
+            setTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            setTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             ]
         )
     }
