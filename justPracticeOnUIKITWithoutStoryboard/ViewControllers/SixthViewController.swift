@@ -33,6 +33,14 @@ final class SixthViewController: UIViewController {
         return theSwitch
     }()
     
+    private lazy var setStepper: UIStepper = {
+        let stepper = UIStepper()
+        stepper.minimumValue = 0
+        stepper.maximumValue = 100
+        stepper.translatesAutoresizingMaskIntoConstraints = false
+        return stepper
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -40,6 +48,7 @@ final class SixthViewController: UIViewController {
         view.addSubview(setLabel)
         view.addSubview(setTextField)
         view.addSubview(setSwitch)
+        view.addSubview(setStepper)
         setConstraints()
     }
 }
@@ -63,6 +72,10 @@ extension SixthViewController {
             setSwitch.topAnchor.constraint(equalTo: setTextField.topAnchor, constant: 60),
             setSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             setSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            
+            setStepper.topAnchor.constraint(equalTo: setSwitch.topAnchor, constant: 60),
+            setStepper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            setStepper.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             ]
         )
     }
