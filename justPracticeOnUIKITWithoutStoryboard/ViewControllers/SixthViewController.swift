@@ -26,12 +26,20 @@ final class SixthViewController: UIViewController {
         return textField
     }()
     
+    private lazy var setSwitch: UISwitch = {
+        let theSwitch = UISwitch()
+        theSwitch.isOn = true
+        theSwitch.translatesAutoresizingMaskIntoConstraints = false
+        return theSwitch
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(setButton)
         view.addSubview(setLabel)
         view.addSubview(setTextField)
+        view.addSubview(setSwitch)
         setConstraints()
     }
 }
@@ -51,6 +59,10 @@ extension SixthViewController {
             setTextField.topAnchor.constraint(equalTo: setLabel.topAnchor, constant: 60),
             setTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             setTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            
+            setSwitch.topAnchor.constraint(equalTo: setTextField.topAnchor, constant: 60),
+            setSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            setSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             ]
         )
     }
