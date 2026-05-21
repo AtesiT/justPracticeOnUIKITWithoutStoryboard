@@ -2,6 +2,8 @@ import UIKit
 
 final class SixthViewController: UIViewController {
     
+    var stepperValue = 0.0
+    
     private lazy var setButton: UIButton = {
         let button = UIButton()
         button.setTitle("Check", for: .normal)
@@ -37,6 +39,8 @@ final class SixthViewController: UIViewController {
         let stepper = UIStepper()
         stepper.minimumValue = 0
         stepper.maximumValue = 100
+        stepper.value = stepperValue
+        stepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         stepper.translatesAutoresizingMaskIntoConstraints = false
         return stepper
     }()
@@ -50,6 +54,11 @@ final class SixthViewController: UIViewController {
         view.addSubview(setSwitch)
         view.addSubview(setStepper)
         setConstraints()
+    }
+    
+    @objc private func stepperValueChanged(_ sender: UIStepper) {
+        self.stepperValue = sender.value
+        print(stepperValue)
     }
 }
 
