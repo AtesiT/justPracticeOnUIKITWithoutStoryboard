@@ -51,6 +51,13 @@ final class SixthViewController: UIViewController {
         return slider
     }()
     
+    private lazy var progressBar: UIProgressView = {
+        let progressBar = UIProgressView()
+        progressBar.setProgress(10.0, animated: true)
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        return progressBar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -60,6 +67,7 @@ final class SixthViewController: UIViewController {
         view.addSubview(setSwitch)
         view.addSubview(setStepper)
         view.addSubview(setSlider)
+        view.addSubview(progressBar)
         setConstraints()
     }
     
@@ -96,6 +104,10 @@ extension SixthViewController {
             setSlider.topAnchor.constraint(equalTo: setStepper.topAnchor, constant: 60),
             setSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             setSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            
+            progressBar.topAnchor.constraint(equalTo: setSlider.topAnchor, constant: 60),
+            progressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            progressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             ]
         )
     }
