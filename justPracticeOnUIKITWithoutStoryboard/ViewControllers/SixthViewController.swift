@@ -45,6 +45,12 @@ final class SixthViewController: UIViewController {
         return stepper
     }()
     
+    private lazy var setSlider: UISlider = {
+        let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -53,6 +59,7 @@ final class SixthViewController: UIViewController {
         view.addSubview(setTextField)
         view.addSubview(setSwitch)
         view.addSubview(setStepper)
+        view.addSubview(setSlider)
         setConstraints()
     }
     
@@ -85,6 +92,10 @@ extension SixthViewController {
             setStepper.topAnchor.constraint(equalTo: setSwitch.topAnchor, constant: 60),
             setStepper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             setStepper.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            
+            setSlider.topAnchor.constraint(equalTo: setStepper.topAnchor, constant: 60),
+            setSlider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            setSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             ]
         )
     }
