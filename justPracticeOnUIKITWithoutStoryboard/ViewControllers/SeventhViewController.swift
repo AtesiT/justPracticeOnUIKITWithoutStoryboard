@@ -17,11 +17,19 @@ final class SeventhViewController: UIViewController {
         return textField
     }()
     
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.text = "Label"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(button)
         view.addSubview(textField)
+        view.addSubview(label)
         setConstraints()
     }
 }
@@ -35,7 +43,11 @@ private extension SeventhViewController {
             
             textField.topAnchor.constraint(equalTo: button.topAnchor, constant: 60),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            label.topAnchor.constraint(equalTo: textField.topAnchor, constant: 60),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
