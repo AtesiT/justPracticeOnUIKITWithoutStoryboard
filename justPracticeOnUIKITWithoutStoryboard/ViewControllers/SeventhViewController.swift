@@ -24,12 +24,19 @@ final class SeventhViewController: UIViewController {
         return label
     }()
     
+    private lazy var theSwitch: UISwitch = {
+        let theSwitch = UISwitch()
+        theSwitch.translatesAutoresizingMaskIntoConstraints = false
+        return theSwitch
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(button)
         view.addSubview(textField)
         view.addSubview(label)
+        view.addSubview(theSwitch)
         setConstraints()
     }
 }
@@ -48,6 +55,10 @@ private extension SeventhViewController {
             label.topAnchor.constraint(equalTo: textField.topAnchor, constant: 60),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theSwitch.topAnchor.constraint(equalTo: label.topAnchor, constant: 60),
+            theSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
