@@ -30,6 +30,14 @@ final class SeventhViewController: UIViewController {
         return theSwitch
     }()
     
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.insertSegment(withTitle: "First", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "Second", at: 1, animated: false)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        return segmentedControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -37,6 +45,7 @@ final class SeventhViewController: UIViewController {
         view.addSubview(textField)
         view.addSubview(label)
         view.addSubview(theSwitch)
+        view.addSubview(segmentedControl)
         setConstraints()
     }
 }
@@ -59,6 +68,10 @@ private extension SeventhViewController {
             theSwitch.topAnchor.constraint(equalTo: label.topAnchor, constant: 60),
             theSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            segmentedControl.topAnchor.constraint(equalTo: theSwitch.topAnchor, constant: 60),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
