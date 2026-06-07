@@ -44,6 +44,14 @@ final class SeventhViewController: UIViewController {
         return stepper
     }()
     
+    private lazy var slider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -53,6 +61,7 @@ final class SeventhViewController: UIViewController {
         view.addSubview(theSwitch)
         view.addSubview(segmentedControl)
         view.addSubview(stepper)
+        view.addSubview(slider)
         setConstraints()
     }
 }
@@ -83,6 +92,10 @@ private extension SeventhViewController {
             stepper.topAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 60),
             stepper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stepper.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            slider.topAnchor.constraint(equalTo: stepper.topAnchor, constant: 60),
+            slider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            slider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
