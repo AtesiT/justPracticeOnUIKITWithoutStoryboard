@@ -59,6 +59,12 @@ final class SeventhViewController: UIViewController {
         return datePicker
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.isHidden = false
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +77,7 @@ final class SeventhViewController: UIViewController {
         view.addSubview(stepper)
         view.addSubview(slider)
         view.addSubview(datePicker)
+        view.addSubview(activityIndicator)
         setConstraints()
     }
 }
@@ -109,6 +116,10 @@ private extension SeventhViewController {
             datePicker.topAnchor.constraint(equalTo: slider.topAnchor, constant: 60),
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            activityIndicator.topAnchor.constraint(equalTo: datePicker.topAnchor, constant: 60),
+            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
