@@ -52,6 +52,14 @@ final class SeventhViewController: UIViewController {
         return slider
     }()
     
+    private lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -62,6 +70,7 @@ final class SeventhViewController: UIViewController {
         view.addSubview(segmentedControl)
         view.addSubview(stepper)
         view.addSubview(slider)
+        view.addSubview(datePicker)
         setConstraints()
     }
 }
@@ -96,6 +105,10 @@ private extension SeventhViewController {
             slider.topAnchor.constraint(equalTo: stepper.topAnchor, constant: 60),
             slider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             slider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            datePicker.topAnchor.constraint(equalTo: slider.topAnchor, constant: 60),
+            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
