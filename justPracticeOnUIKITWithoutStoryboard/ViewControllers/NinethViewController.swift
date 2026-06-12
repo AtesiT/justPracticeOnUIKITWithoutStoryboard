@@ -11,9 +11,18 @@ final class NinethViewController: UIViewController {
         return button
     }()
     
+    private let label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "Hi"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(button)
+        view.addSubview(label)
         setConstraints()
     }
 }
@@ -26,6 +35,10 @@ extension NinethViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             button.heightAnchor.constraint(equalToConstant: 20),
+            
+            label.topAnchor.constraint(equalTo: button.topAnchor, constant: 60),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
