@@ -19,10 +19,19 @@ final class NinethViewController: UIViewController {
         return label
     }()
     
+    private let textField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Type text"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(button)
         view.addSubview(label)
+        view.addSubview(textField)
         setConstraints()
     }
 }
@@ -39,6 +48,10 @@ extension NinethViewController {
             label.topAnchor.constraint(equalTo: button.topAnchor, constant: 60),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            textField.topAnchor.constraint(equalTo: label.topAnchor, constant: 60),
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
