@@ -27,11 +27,19 @@ final class NinethViewController: UIViewController {
         return textField
     }()
     
+    private let segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["One", "Two", "Three", "Four", "Five"])
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        return segmentedControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(button)
         view.addSubview(label)
         view.addSubview(textField)
+        view.addSubview(segmentedControl)
         setConstraints()
     }
 }
@@ -52,6 +60,10 @@ extension NinethViewController {
             textField.topAnchor.constraint(equalTo: label.topAnchor, constant: 60),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            segmentedControl.topAnchor.constraint(equalTo: textField.topAnchor, constant: 60),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
