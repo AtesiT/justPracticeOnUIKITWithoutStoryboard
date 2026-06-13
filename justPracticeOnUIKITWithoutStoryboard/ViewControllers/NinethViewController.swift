@@ -34,12 +34,19 @@ final class NinethViewController: UIViewController {
         return segmentedControl
     }()
     
+    private let theSwitch: UISwitch = {
+        let theSwitch = UISwitch()
+        theSwitch.translatesAutoresizingMaskIntoConstraints = false
+        return theSwitch
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(button)
         view.addSubview(label)
         view.addSubview(textField)
         view.addSubview(segmentedControl)
+        view.addSubview(theSwitch)
         setConstraints()
     }
 }
@@ -64,6 +71,10 @@ extension NinethViewController {
             segmentedControl.topAnchor.constraint(equalTo: textField.topAnchor, constant: 60),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            theSwitch.topAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 60),
+            theSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            theSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
