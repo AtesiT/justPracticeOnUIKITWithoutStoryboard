@@ -40,6 +40,16 @@ final class NinethViewController: UIViewController {
         return theSwitch
     }()
     
+    private let slider: UISlider = {
+        let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.value = 50
+        slider.isContinuous = true
+        return slider
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(button)
@@ -47,6 +57,7 @@ final class NinethViewController: UIViewController {
         view.addSubview(textField)
         view.addSubview(segmentedControl)
         view.addSubview(theSwitch)
+        view.addSubview(slider)
         setConstraints()
     }
 }
@@ -75,6 +86,10 @@ extension NinethViewController {
             theSwitch.topAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 60),
             theSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             theSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            slider.topAnchor.constraint(equalTo: theSwitch.topAnchor, constant: 60),
+            slider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            slider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
