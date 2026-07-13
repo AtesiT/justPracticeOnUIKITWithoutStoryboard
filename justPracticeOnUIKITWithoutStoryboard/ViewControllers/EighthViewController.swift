@@ -21,11 +21,19 @@ final class EighthViewController: UIViewController {
         return button
     }()
     
+    private let secondButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Second Button", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
         view.addSubview(contentView)
         contentView.addSubview(button)
+        contentView.addSubview(secondButton)
         setConstraints()
     }
 }
