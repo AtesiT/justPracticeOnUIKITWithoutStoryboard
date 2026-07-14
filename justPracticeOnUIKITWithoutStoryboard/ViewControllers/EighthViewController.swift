@@ -28,12 +28,20 @@ final class EighthViewController: UIViewController {
         return button
     }()
     
+    private let label: UILabel = {
+        let label = UILabel()
+        label.text = "Label"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
         view.addSubview(contentView)
         contentView.addSubview(button)
         contentView.addSubview(secondButton)
+        contentView.addSubview(label)
         setConstraints()
     }
 }
