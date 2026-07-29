@@ -42,6 +42,13 @@ final class EighthViewController: UIViewController {
         return label
     }()
     
+    private let thirdlabel: UILabel = {
+        let label = UILabel()
+        label.text = "ThirdLabel"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
@@ -50,6 +57,7 @@ final class EighthViewController: UIViewController {
         contentView.addSubview(secondButton)
         contentView.addSubview(label)
         contentView.addSubview(secondlabel)
+        contentView.addSubview(thirdlabel)
         setConstraints()
     }
 }
